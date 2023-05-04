@@ -11,13 +11,18 @@
 
                 </tr>
             </thead>
-            <tbody *ngFor="let item of pagedItems">
-                <tr >
-                    <td>{{item}}</td> 
-                    <td>{{item}}</td> 
-                    <td>{{item}}</td>
+            <tbody *ngFor="let item of items | paginate:{itemsPerPage:10, currentPage:page ,totalItems:items.length}">
+                <tr>
+                    <td>{{item.ItemName}}</td>
+                    <td>
+                        <select>
+                            <option value="" *ngFor="let l of item.ItemLocation">{{l}}</option>
+                        </select>
+                    </td>
+                    <td>{{item.ItemPrice |currency:"GEL":'symbol-narrow' }}</td>
+                    <td><button>DELETE</button></td>
                 </tr>
-                 
+
             </tbody>
         </table>
 
@@ -25,8 +30,6 @@
 </div>
 
 
-<div > </div>
-<pagination-controls (pageChange)="page = $event"></pagination-controls>
-<button [disabled]="page == 1" (click)="setPage(page - 1)">Previous</button>
- 
-<button [disabled]="page == totalPages" (click)="setPage(page + 1)">Next</button>
+<div class="pagination"> 
+<pagination-controls (pageChange)="page = $event"></pagination-controls> 
+</div>

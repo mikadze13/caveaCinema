@@ -1,3 +1,5 @@
-.ngx-pagination{
-    display: none !important;
+.pagination{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

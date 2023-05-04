@@ -6,13 +6,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './core/component/home/home.component';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent 
   ],
   imports: [
     BrowserModule,
