@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './core/component/home/home.component';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule
+    CommonModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
