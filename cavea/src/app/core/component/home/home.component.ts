@@ -7,6 +7,7 @@ import { Items } from './home.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  lengthOfArr!:number
   items: Items[] = [
     {
       ItemName: "item 1",
@@ -139,5 +140,6 @@ export class HomeComponent implements OnInit {
 
    
   ngOnInit(): void {
+    this.lengthOfArr = this.items.length
   }
 }

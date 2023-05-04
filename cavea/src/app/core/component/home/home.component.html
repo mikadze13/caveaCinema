@@ -1,4 +1,5 @@
 <div class="container">
+    <button [routerLink]="'/add'">ნივთის დამატება</button>
     <div class="table-responsive">
         <h2 class="text-center">Table</h2>
         <table class="table">
@@ -32,4 +33,5 @@
 
 <div class="pagination"> 
 <pagination-controls (pageChange)="page = $event"></pagination-controls> 
+<p >TOTAL : {{lengthOfArr}}</p>
 </div>
