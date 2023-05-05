@@ -1,1 +1,15 @@
-<p>add-item works!</p>
+<form action="" [formGroup]="AddItemForm" (ngSubmit)="AddItems($event)">
+    <select name="" id="" formControlName="location">
+        <option value="მთავარი ოფისი">მთავარი ოფისი</option>
+        <option value="კავეა გალერეა">კავეა გალერეა</option>
+        <option value="კავეა თბილისი მოლი">კავეა თბილისი მოლი</option>
+        <option value="კავეა ისთ ფოინთი">კავეა ისთ ფოინთი</option>
+        <option value="კავეა სითი მოლი">კავეა სითი მოლი</option>
+    </select>
+    <span *ngIf="location && location.invalid&&location.touched">Select Location</span>
+    <input type="text" name="itemname" id="itemname" placeholder="itemname" formControlName="itemName">
+    <span *ngIf="itemName && itemName.invalid&&itemName.touched">Enter item name</span>
+    <input type="number" name="itemPrice" id="itemPrice" placeholder="price" formControlName="itemPrice">
+    <span *ngIf="itemPrice && itemPrice.invalid&&itemPrice.touched">Enter Your Name</span>
+    <button [disabled]="AddItemForm.invalid" type="submit">Add</button>
+</form>

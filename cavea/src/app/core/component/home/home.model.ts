@@ -1,6 +1,6 @@
 export interface Items{
     ItemName:string,
-    ItemLocation:any[],
+    ItemLocation:any,
     ItemPrice:number,
     ID:number
 }

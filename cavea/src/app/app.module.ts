@@ -7,20 +7,24 @@ import { HomeComponent } from './core/component/home/home.component';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AddItemComponent } from './components/add-item/add-item.component'; 
-
+import { AddItemComponent } from './components/add-item/add-item.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    AddItemComponent 
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserModule,
+    AppRoutingModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]
