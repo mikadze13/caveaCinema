@@ -27,6 +27,7 @@ export class AddItemComponent implements OnInit {
     } else {
       this.route.navigate(['add'])
     }
+    // If the element received all values successfully reset the inputs
     if (inputElement) {
       this.AddItemForm.reset();
     }
