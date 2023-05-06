@@ -10,10 +10,8 @@ import { ItemService } from '../../service/item.service';
 })
 export class HomeComponent implements OnInit {
   lengthOfArr!: number
-  itemsArr: Items[] = []
-  @Input() Itemmessage: any;
-  itemIndex!: number
-
+  itemsArr: Items[] = [] 
+  itemIndex!: number 
   pageSize: number = 3;
   page: number = 1;
   totalPages: number = 0;
@@ -24,26 +22,13 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.itemsArr = this.itemService.items
+    this.itemsArr = this.itemService.getItems()
     this.lengthOfArr = this.itemsArr.length
 
   }
-  logInfo(event: any) {
-    console.log(event)
-  }
-
-
-  onAddItem(event: any) {
-  }
-
-  onDeleteItem(index:number) {
-    console.log(index)
+  //  delete item from array
+  onDeleteItem(index: number) {
+    this.lengthOfArr = this.itemsArr.length
     this.itemService.deleteItem(index)
-    // for (let i of this.itemsArr) {
-      // const index = this.itemsArr.indexOf()
-      // this.itemIndex = index 
-    // }
-    // console.log(this.itemIndex)
-    // this.itemService.deleteItem(this.itemIndex)
   }
 }
