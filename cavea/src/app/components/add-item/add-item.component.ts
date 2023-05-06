@@ -1,22 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Items } from 'src/app/core/component/home/home.model';
+import { ItemService } from 'src/app/core/service/item.service';
 
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
-export class AddItemComponent {
-
+export class AddItemComponent implements OnInit{ 
   AddItemForm = new FormGroup({
     location: new FormControl('', [Validators.required]),
     itemName: new FormControl('', [Validators.required]),
-    itemPrice: new FormControl('', [Validators.required]), 
-  }); 
-
-  AddItems(inputElement: any) {
+    itemPrice: new FormControl('', [Validators.required]),
+  });
+  constructor(private itemService:ItemService){}
+  onNewItem(inputElement: any) {
     inputElement = this.AddItemForm.value;
-    console.log(inputElement)
+     this.itemService.addItem(inputElement) 
+    alert('added successfully')
     if (inputElement) { 
       this.AddItemForm.reset();
     }
@@ -31,5 +33,8 @@ export class AddItemComponent {
 
   get itemPrice() {
     return this.AddItemForm.get('itemPrice');
+  }
+  ngOnInit(): void {
+    
   }
 }

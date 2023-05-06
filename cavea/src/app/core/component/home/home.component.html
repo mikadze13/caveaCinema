@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" (ItemInfo)="logInfo($event)" >
     <button [routerLink]="'/add'">ნივთის დამატება</button>
     <div class="table-responsive">
         <h2 class="text-center">Table</h2>
@@ -12,7 +12,7 @@
 
                 </tr>
             </thead>
-            <tbody *ngFor="let item of items | paginate:{itemsPerPage:10, currentPage:page ,totalItems:items.length}">
+            <tbody *ngFor="let item of itemsArr | paginate:{itemsPerPage:10, currentPage:page ,totalItems:itemsArr.length}; let i = index; " >
                 <tr>
                     <td>{{item.ItemName}}</td>
                       
@@ -20,7 +20,7 @@
                         {{item.ItemLocation}}
                     </td> 
                     <td>{{item.ItemPrice |currency:"GEL":'symbol-narrow' }}</td>
-                    <td><button>DELETE</button></td>
+                    <td><button (click)="onDeleteItem()">DELETE</button></td>
                 </tr>
 
             </tbody>
@@ -34,3 +34,5 @@
 <pagination-controls (pageChange)="page = $event"></pagination-controls> 
 <p >TOTAL : {{lengthOfArr}}</p>
 </div>
+
+ 

@@ -1,4 +1,4 @@
-<form action="" [formGroup]="AddItemForm" (ngSubmit)="AddItems($event)">
+<form action="" [formGroup]="AddItemForm" (ngSubmit)="onNewItem($event)">
     <select name="" id="" formControlName="location">
         <option value="მთავარი ოფისი">მთავარი ოფისი</option>
         <option value="კავეა გალერეა">კავეა გალერეა</option>
@@ -10,6 +10,7 @@
     <input type="text" name="itemname" id="itemname" placeholder="itemname" formControlName="itemName">
     <span *ngIf="itemName && itemName.invalid&&itemName.touched">Enter item name</span>
     <input type="number" name="itemPrice" id="itemPrice" placeholder="price" formControlName="itemPrice">
-    <span *ngIf="itemPrice && itemPrice.invalid&&itemPrice.touched">Enter Your Name</span>
+    <span *ngIf="itemPrice && itemPrice.invalid&&itemPrice.touched">Enter Item price</span>
     <button [disabled]="AddItemForm.invalid" type="submit">Add</button>
 </form>
+ 
