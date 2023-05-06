@@ -20,7 +20,8 @@
                         {{item.ItemLocation}}
                     </td> 
                     <td>{{item.ItemPrice |currency:"GEL":'symbol-narrow' }}</td>
-                    <td><button (click)="onDeleteItem()">DELETE</button></td>
+                    
+                    <td><button (click)="onDeleteItem(i)">DELETE</button></td>
                 </tr>
 
             </tbody>

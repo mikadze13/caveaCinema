@@ -36,7 +36,9 @@ export class HomeComponent implements OnInit {
   onAddItem(event: any) {
   }
 
-  onDeleteItem() {
+  onDeleteItem(index:number) {
+    console.log(index)
+    this.itemService.deleteItem(index)
     // for (let i of this.itemsArr) {
       // const index = this.itemsArr.indexOf()
       // this.itemIndex = index 
