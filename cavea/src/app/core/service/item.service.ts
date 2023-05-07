@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Items } from '../component/home/home.model';
 import { environment } from 'src/environments/environments';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, Subject, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -126,6 +126,9 @@ export class ItemService {
 
     // }
   ]
+  itemsUpdated$ = new Subject<Items[]>()
+ itemArray: any[] = [] 
+  
   // save items in localstorage
   private saveItems() {
     localStorage.setItem('Item', JSON.stringify(this.items))
@@ -137,13 +140,13 @@ export class ItemService {
     map((response)=>{
       if(response){
         
-        const itemArray: any[] = [] 
+        
       //  get key
         for(let key in response){  
-          itemArray.push({ ...response, key:key} ); 
+          this.itemArray.unshift({ ...response, key:key} ); 
         }
          
-        return itemArray
+        return this.itemArray
       }else{
         return []
       }
@@ -160,13 +163,23 @@ export class ItemService {
       ItemLocation: newItem.location,
       ItemPrice: newItem.itemPrice
     }).subscribe((response) => {
-      console.log(response)
+      // console.log(response)
     })
   }
 
   // delete item
-  deleteItem(index: number) {
-    this.items.splice(index, 1)
-    this.saveItems()
+  deleteItem(key: string) {
+    // this.itemArray.splice(index, 1)
+    // console.log('click')
+    // this.saveItems()
+    // console.log(this.itemArray[0]) 
+   return this.httpClient.delete(`${this.baseUrl}caveaCinema/${key}.json`).pipe(
+    tap(()=>{
+      const itemIndex = this.itemArray.map((item)=> item.key).indexOf(key)
+      this.itemArray.splice(itemIndex, 1);
+      console.log(this.itemArray[0])
+      this.itemsUpdated$.next(this.itemArray)
+    })
+   )
   }
 }

@@ -18,29 +18,44 @@ export class HomeComponent implements OnInit {
   pagedItems: string[] = [];
 
 
-  arrr:Items[]=[]
+  key!: any;
+
+  arrr: Items[] = []
   constructor(private itemService: ItemService) {
 
   }
 
 
   ngOnInit(): void {
-    this.itemService.getItems().subscribe((response) => {
-      this.itemsArr = response
-        
-      for(let i of this.itemsArr){
+    this.itemService.getItems().subscribe((items) => {
+      this.itemsArr = items
+
+      for (let i of this.itemsArr) {
         let kk = i.key
         this.arrr.push(i[kk])
-      } 
+        this.key = i.key
+      }
     })
-     
-    this.lengthOfArr = this.itemsArr.length
 
-  } 
+    this.lengthOfArr = this.arrr.length
+    this.itemService.itemsUpdated$.subscribe((items) => {
+      this.arrr = items
+    })
+  }
 
   //  delete item from array
-  onDeleteItem(index: number) {
-    this.lengthOfArr = this.itemsArr.length
-    this.itemService.deleteItem(index)
+  onDeleteItem() {
+
+    // for (let i of this.itemsArr) {
+    //   this.key = i.key
+    // }
+    console.log(this.arrr)
+     
+    this.lengthOfArr = this.arrr.length
+    this.itemService.deleteItem(this.key).subscribe(
+      (response) => {
+        console.log(response)
+      }
+    )
   }
 }
