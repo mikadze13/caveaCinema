@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
   page: number = 1;
   totalPages: number = 0;
   pagedItems: string[] = [];
+
+
+  arrr:Items[]=[]
   constructor(private itemService: ItemService) {
 
   }
@@ -24,12 +27,17 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.itemService.getItems().subscribe((response) => {
       this.itemsArr = response
+        
+      for(let i of this.itemsArr){
+        let kk = i.key
+        this.arrr.push(i[kk])
+      } 
     })
-    console.log(this.itemsArr)
+     
     this.lengthOfArr = this.itemsArr.length
 
-  }
-  // console.log(this.itemsArr)
+  } 
+
   //  delete item from array
   onDeleteItem(index: number) {
     this.lengthOfArr = this.itemsArr.length

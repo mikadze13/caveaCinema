@@ -131,19 +131,18 @@ export class ItemService {
     localStorage.setItem('Item', JSON.stringify(this.items))
   }
 
+  // get items from firebase
   getItems():Observable<Items[]>{ 
    return  this.httpClient.get(`${this.baseUrl}caveaCinema.json`).pipe(
     map((response)=>{
       if(response){
         
         const itemArray: any[] = [] 
-        for(let key in response){
-          // console.log({...response.push(key)})
+      //  get key
+        for(let key in response){  
           itemArray.push({ ...response, key:key} ); 
         }
-        for(var i of itemArray){
-          // console.log(i.ItemLocation)
-        }
+         
         return itemArray
       }else{
         return []
