@@ -12,7 +12,7 @@
 
                 </tr>
             </thead>
-            <tbody *ngFor="let item of arrr | paginate:{itemsPerPage:10, currentPage:page ,totalItems:itemsArr.length}; let i = index; " >
+            <tbody *ngFor="let item of arrr | paginate:{itemsPerPage:10, currentPage:page ,totalItems:itemsArr.length}; let i = index; "  >
                 <tr>
                     <td>{{item.ItemName}}</td>
                       

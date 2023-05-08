@@ -138,9 +138,7 @@ export class ItemService {
   getItems():Observable<Items[]>{ 
    return  this.httpClient.get(`${this.baseUrl}caveaCinema.json`).pipe(
     map((response)=>{
-      if(response){
-        
-        
+      if(response){ 
       //  get key
         for(let key in response){  
           this.itemArray.unshift({ ...response, key:key} ); 
@@ -173,11 +171,14 @@ export class ItemService {
     // console.log('click')
     // this.saveItems()
     // console.log(this.itemArray[0]) 
+    // console.log(key)
    return this.httpClient.delete(`${this.baseUrl}caveaCinema/${key}.json`).pipe(
     tap(()=>{
       const itemIndex = this.itemArray.map((item)=> item.key).indexOf(key)
+      // const some = this.itemArray[0] es abrunebs scor keys
       this.itemArray.splice(itemIndex, 1);
-      console.log(this.itemArray[0])
+      // console.log(this.itemArray[0].key)
+      // console.log(this.itemArray[0])
       this.itemsUpdated$.next(this.itemArray)
     })
    )

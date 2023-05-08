@@ -26,14 +26,15 @@ export class HomeComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.itemService.getItems().subscribe((items) => {
       this.itemsArr = items
-
+      console.log(this.itemsArr)
       for (let i of this.itemsArr) {
-        let kk = i.key
+        let kk = i.key 
         this.arrr.push(i[kk])
         this.key = i.key
+        console.log(this.arrr)
       }
     })
 
@@ -45,13 +46,12 @@ export class HomeComponent implements OnInit {
 
   //  delete item from array
   onDeleteItem() {
-
-    // for (let i of this.itemsArr) {
-    //   this.key = i.key
-    // }
-    console.log(this.arrr)
-     
     this.lengthOfArr = this.arrr.length
+
+    for (let i of this.itemsArr) {
+      this.key = i.key
+    }
+
     this.itemService.deleteItem(this.key).subscribe(
       (response) => {
         console.log(response)
