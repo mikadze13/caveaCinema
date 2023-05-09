@@ -153,32 +153,20 @@ export class ItemService {
   }
 
   // add item in firebase 
-  addItem(newItem: any) {
-    // this.items.unshift({ ItemName: newItem.itemName, ItemLocation: newItem.location, ItemPrice: newItem.itemPrice })
-    // this.saveItems()
+  addItem(newItem: any) { 
     this.httpClient.post(`${this.baseUrl}caveaCinema.json`, {
       ItemName: newItem.itemName,
       ItemLocation: newItem.location,
       ItemPrice: newItem.itemPrice
-    }).subscribe((response) => {
-      // console.log(response)
-    })
+    }) 
   }
 
   // delete item
-  deleteItem(key: string) {
-    // this.itemArray.splice(index, 1)
-    // console.log('click')
-    // this.saveItems()
-    // console.log(this.itemArray[0]) 
-    // console.log(key)
+  deleteItem(key: string) { 
    return this.httpClient.delete(`${this.baseUrl}caveaCinema/${key}.json`).pipe(
     tap(()=>{
-      const itemIndex = this.itemArray.map((item)=> item.key).indexOf(key)
-      // const some = this.itemArray[0] es abrunebs scor keys
-      this.itemArray.splice(itemIndex, 1);
-      // console.log(this.itemArray[0].key)
-      // console.log(this.itemArray[0])
+      const itemIndex = this.itemArray.map((item)=> item.key).indexOf(key) 
+      this.itemArray.splice(itemIndex, 1); 
       this.itemsUpdated$.next(this.itemArray)
     })
    )

@@ -17,6 +17,11 @@ export class HomeComponent implements OnInit {
   totalPages: number = 0;
   pagedItems: string[] = [];
 
+  filterBy = 'name';
+  nameFilter = '';
+  priceFilter = '';
+  minPriceFilter = '';
+  maxPriceFilter = '';
 
   key!: any;
 
@@ -26,15 +31,13 @@ export class HomeComponent implements OnInit {
   }
 
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.itemService.getItems().subscribe((items) => {
       this.itemsArr = items
-      console.log(this.itemsArr)
       for (let i of this.itemsArr) {
-        let kk = i.key 
+        let kk = i.key
         this.arrr.push(i[kk])
         this.key = i.key
-        console.log(this.arrr)
       }
     })
 
@@ -52,10 +55,25 @@ export class HomeComponent implements OnInit {
       this.key = i.key
     }
 
-    this.itemService.deleteItem(this.key).subscribe(
-      (response) => {
-        console.log(response)
+    this.itemService.deleteItem(this.key)
+  }
+
+  // FILTER ITEMS 
+
+  get filteredItems() {
+
+    if (this.filterBy === 'name') {
+      return this.arrr.filter(item => item.ItemName.toLowerCase().includes(this.nameFilter.toLowerCase()));
+    } else if (this.filterBy === 'price') {
+      let filteredItems = this.arrr;
+      if (this.minPriceFilter) {
+        filteredItems = filteredItems.filter(item => item.ItemPrice >= Number(this.minPriceFilter));
       }
-    )
+      if (this.maxPriceFilter) {
+        filteredItems = filteredItems.filter(item => item.ItemPrice <= Number(this.maxPriceFilter));
+      }
+      return filteredItems.sort((a, b) => a.ItemPrice - b.ItemPrice);
+    }
+    return this.arrr;
   }
 }

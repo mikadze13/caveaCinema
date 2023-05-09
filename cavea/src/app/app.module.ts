@@ -9,13 +9,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'; 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    AddItemComponent
+    AddItemComponent 
   ],
   imports: [
     BrowserModule,

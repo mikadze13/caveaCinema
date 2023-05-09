@@ -1,5 +1,16 @@
-<div class="container"   >
-    <button [routerLink]="'/add'">ნივთის დამატება</button>
+<div class="container">
+    <button [routerLink]="'/add'">ნივთის დამატება</button> 
+    <div>
+        <select [(ngModel)]="filterBy">
+            <option value="name">Name</option>
+            <option value="price">Price</option>
+        </select>
+        <input type="text" [(ngModel)]="nameFilter" *ngIf="filterBy === 'name'" placeholder="Filter by name...">
+        <input type="number" [(ngModel)]="minPriceFilter" *ngIf="filterBy === 'price'" placeholder="Min price...">
+        <input type="number" [(ngModel)]="maxPriceFilter" *ngIf="filterBy === 'price'" placeholder="Max price...">
+    </div>
+
+
     <div class="table-responsive">
         <h2 class="text-center">Table</h2>
         <table class="table">
@@ -12,28 +23,27 @@
 
                 </tr>
             </thead>
-            <tbody *ngFor="let item of arrr | paginate:{itemsPerPage:10, currentPage:page ,totalItems:itemsArr.length}; let i = index; "  >
+            <tbody
+                *ngFor="let item of filteredItems | paginate:{itemsPerPage:10, currentPage:page ,totalItems:itemsArr.length}; let i = index; ">
                 <tr>
                     <td>{{item.ItemName}}</td>
-                      
-                    <td >
+
+                    <td>
                         {{item.ItemLocation}}
-                    </td> 
+                    </td>
                     <td>{{item.ItemPrice |currency:"GEL":'symbol-narrow' }}</td>
-                    
+
                     <td><button (click)="onDeleteItem()">DELETE</button></td>
                 </tr>
 
-            </tbody>
+            </tbody> 
         </table>
 
     </div>
 </div>
 
 
-<div class="pagination"> 
-<pagination-controls (pageChange)="page = $event"></pagination-controls> 
-<p >TOTAL : {{lengthOfArr}}</p>
+<div class="pagination">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    <p>TOTAL : {{lengthOfArr}}</p>
 </div>
-
- 
