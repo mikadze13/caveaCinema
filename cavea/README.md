@@ -1,6 +1,9 @@
-# Cavea
+# წაიკითხე
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+მას შემდეგ რაც კოდს დაკლონავ ან ჩამოწერ,პროექტი გახსენი ედიტორში და გაუშვი ბრძანება:
+```
+npm install
+```
 
 ## Development server
 
