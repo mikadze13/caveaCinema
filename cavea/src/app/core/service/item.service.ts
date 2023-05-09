@@ -159,7 +159,7 @@ export class ItemService {
       ItemLocation: newItem.location,
       ItemPrice: newItem.itemPrice
     }).subscribe((response) => {
-      // console.log(response)
+      console.log(response)
     })
   }
 

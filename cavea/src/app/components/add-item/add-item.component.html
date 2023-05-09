@@ -1,26 +1,26 @@
 <div class="main">
     <form action="" [formGroup]="AddItemForm" (ngSubmit)="onNewItem($event)">
-         
-            <label for="location">ლოკაცია</label>
-            <select name="" id="location" formControlName="location" >
-                <option value="" disabled selected>აირჩიე ადგილმდებარეობა</option>
-                <option value="მთავარი ოფისი">მთავარი ოფისი</option>
-                <option value="კავეა გალერეა">კავეა გალერეა</option>
-                <option value="კავეა თბილისი მოლი">კავეა თბილისი მოლი</option>
-                <option value="კავეა ისთ ფოინთი">კავეა ისთ ფოინთი</option>
-                <option value="კავეა სითი მოლი">კავეა სითი მოლი</option>
-            </select>
-            <span *ngIf="location && location.invalid&&location.touched">Select Location</span>
-         
-            <label for="itemname">ნივთის სახელი</label>
+
+        <label for="location">ლოკაცია</label>
+        <select name="" id="location" formControlName="location">
+            <option value="" disabled selected>აირჩიე ადგილმდებარეობა</option>
+            <option value="მთავარი ოფისი">მთავარი ოფისი</option>
+            <option value="კავეა გალერეა">კავეა გალერეა</option>
+            <option value="კავეა თბილისი მოლი">კავეა თბილისი მოლი</option>
+            <option value="კავეა ისთ ფოინთი">კავეა ისთ ფოინთი</option>
+            <option value="კავეა სითი მოლი">კავეა სითი მოლი</option>
+        </select>
+        <span *ngIf="location && location.invalid&&location.touched">Select Location</span>
+
+        <label for="itemname">ნივთის სახელი</label>
             <input type="text" name="itemname" id="itemname" placeholder="ნივთის სახელი" formControlName="itemName" required>
             <span *ngIf="itemName && itemName.invalid&&itemName.touched">შეიყვანეთ ნივთის სახელი</span>
-       
+
             <label for="itemPrice">ნივთის ფასი</label>
             <input type="number" name="itemPrice" id="itemPrice" placeholder="ფასი" formControlName="itemPrice" required>
             <span *ngIf="itemPrice && itemPrice.invalid&&itemPrice.touched">შეიყვანეთ ნივთის ფასი</span>
-        
+
             <button [disabled]="AddItemForm.invalid" type="submit">დამატება</button>
-         
+
     </form>
-</div> 
+</div>
