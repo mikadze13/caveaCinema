@@ -1,10 +1,52 @@
+span {
+    color: red;
+    transition: all .4s ease-in-out;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+label,
+input,
+select {
+    display: block;
+    width: 100%;
+    outline: none;
+}
+
+label {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+input,
+select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
 button {
     display: block;
     margin: 20px auto 0;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #cc3399;
+    background-color: #333;
     color: #fff;
     font-size: 18px;
     font-weight: bold;
@@ -14,7 +56,7 @@ button {
 }
 
 button:hover {
-    background-color: #d74ca9;
+    background-color: #555;
 }
 
 input::-webkit-outer-spin-button,
@@ -22,8 +64,3 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-span {
-    color: red;
-    transition: all .4s ease-in-out; 
-}
- 

@@ -158,9 +158,7 @@ export class ItemService {
       ItemName: newItem.itemName,
       ItemLocation: newItem.location,
       ItemPrice: newItem.itemPrice
-    }).subscribe((response) => {
-      // console.log(response)
-    })
+    }) 
   }
 
   // delete item

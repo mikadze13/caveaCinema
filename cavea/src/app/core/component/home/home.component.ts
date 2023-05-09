@@ -41,19 +41,10 @@ export class HomeComponent implements OnInit {
       }
     })
 
-    setTimeout(() => {
-      this.lengthOfArr = this.itemsArr.length
-    }, 100); 
+    this.lengthOfArr = this.arrr.length
     this.itemService.itemsUpdated$.subscribe((items) => {
       this.arrr = items
-
-      setTimeout(() => {
-        this.lengthOfArr = this.arrr.length 
-      }, 1000);
-       
-      
     })
-     
   }
 
   //  delete item from array
@@ -64,9 +55,7 @@ export class HomeComponent implements OnInit {
       this.key = i.key
     }
 
-    this.itemService.deleteItem(this.key).subscribe((response)=>{
-      console.log(response)
-    })
+    this.itemService.deleteItem(this.key)
   }
 
   // FILTER ITEMS 
