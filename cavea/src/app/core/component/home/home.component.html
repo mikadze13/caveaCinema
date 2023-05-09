@@ -7,13 +7,13 @@
             </select>
             <input type="text" [(ngModel)]="nameFilter" *ngIf="filterBy === 'name'" placeholder="სახელით ფილტრაცია...">
             <input type="number" [(ngModel)]="minPriceFilter" *ngIf="filterBy === 'price'" placeholder="მინ.ფასი...">
-            <input type="number" [(ngModel)]="maxPriceFilter" *ngIf="filterBy === 'price'" placeholder="მაქს.ფასი...">
+            <input type="number" [(ngModel)]="maxPriceFilter" *ngIf="filterBy === 'price'" placeholder="მაქს.ფასი..." style="margin-left:10px">
         </div>
         <button [routerLink]="'/add'" class="add-item ">ნივთის დამატება</button>
 
     </div>
     <div class="table-responsive">
-        <h2 class="text-center">Table</h2>
+        <h2 class="text-center" style="margin-top: 10px;">ნივთების ცხრილი</h2>
         <table class="table">
             <thead>
                 <tr>

@@ -47,11 +47,10 @@ export class HomeComponent implements OnInit {
     this.itemService.itemsUpdated$.subscribe((items) => {
       this.arrr = items
       setTimeout(() => {
-        this.lengthOfArr = this.arrr.length 
+        this.lengthOfArr = this.arrr.length
       }, 1000);
     })
-  }
-
+  } 
   //  delete item from array
   onDeleteItem() {
     this.lengthOfArr = this.arrr.length
@@ -60,7 +59,7 @@ export class HomeComponent implements OnInit {
       this.key = i.key
     }
 
-    this.itemService.deleteItem(this.key).subscribe((response)=>{
+    this.itemService.deleteItem(this.key).subscribe((response) => {
 
     })
   }
