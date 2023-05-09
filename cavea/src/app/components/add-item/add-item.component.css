@@ -46,7 +46,7 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #333;
+    background-color: #cc3399;
     color: #fff;
     font-size: 18px;
     font-weight: bold;
@@ -56,11 +56,16 @@ button {
 }
 
 button:hover {
-    background-color: #555;
+    background-color: #d74ca9;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+span {
+    color: red;
+    transition: all .4s ease-in-out; 
 }

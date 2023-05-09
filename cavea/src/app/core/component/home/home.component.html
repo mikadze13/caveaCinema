@@ -1,16 +1,17 @@
 <div class="container">
-    <button [routerLink]="'/add'">ნივთის დამატება</button> 
-    <div>
-        <select [(ngModel)]="filterBy">
-            <option value="name">Name</option>
-            <option value="price">Price</option>
-        </select>
-        <input type="text" [(ngModel)]="nameFilter" *ngIf="filterBy === 'name'" placeholder="Filter by name...">
-        <input type="number" [(ngModel)]="minPriceFilter" *ngIf="filterBy === 'price'" placeholder="Min price...">
-        <input type="number" [(ngModel)]="maxPriceFilter" *ngIf="filterBy === 'price'" placeholder="Max price...">
+    <div class="but-cont w-100">
+        <div>
+            <select [(ngModel)]="filterBy">
+                <option value="name">სახელი</option>
+                <option value="price">ფასი</option>
+            </select>
+            <input type="text" [(ngModel)]="nameFilter" *ngIf="filterBy === 'name'" placeholder="სახელით ფილტრაცია...">
+            <input type="number" [(ngModel)]="minPriceFilter" *ngIf="filterBy === 'price'" placeholder="მინ.ფასი...">
+            <input type="number" [(ngModel)]="maxPriceFilter" *ngIf="filterBy === 'price'" placeholder="მაქს.ფასი...">
+        </div>
+        <button [routerLink]="'/add'" class="add-item ">ნივთის დამატება</button>
+
     </div>
-
-
     <div class="table-responsive">
         <h2 class="text-center">Table</h2>
         <table class="table">
@@ -33,10 +34,10 @@
                     </td>
                     <td>{{item.ItemPrice |currency:"GEL":'symbol-narrow' }}</td>
 
-                    <td><button (click)="onDeleteItem()">DELETE</button></td>
+                    <td><button (click)="onDeleteItem()" class="deleteItem">წაშლა</button></td>
                 </tr>
 
-            </tbody> 
+            </tbody>
         </table>
 
     </div>
@@ -45,5 +46,5 @@
 
 <div class="pagination">
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
-    <p>TOTAL : {{lengthOfArr}}</p>
+    <p>სულ : {{lengthOfArr}}</p>
 </div>
