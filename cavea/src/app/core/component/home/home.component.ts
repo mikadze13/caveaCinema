@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => {
       this.lengthOfArr = this.itemsArr.length
-    }, 100);
+    }, 400);
     this.itemService.itemsUpdated$.subscribe((items) => {
       this.arrr = items
       setTimeout(() => {
